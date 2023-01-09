@@ -2,15 +2,13 @@ const fs = require('fs');
 const chalk = require('chalk');
 const { array } = require('yargs');
 
-const getNotes = function () {
+const getNotes = () => {
     return "your notes";
 }
 
 const addNote = (title, body) => {
     const notes = loadNotes()
-    const duplicateNotes = notes.filter((note) => {
-        return note.title === title;
-    });
+    const duplicateNotes = notes.filter((note) => note.title === title);
     if (duplicateNotes.length === 0) {
         notes.push({
             title: title,
@@ -25,9 +23,7 @@ const addNote = (title, body) => {
 
 const removeNote = (title) => {
     const notes = loadNotes();
-    const duplicateNotes = notes.filter((note) => {
-        return title !== note.title;
-    });
+    const duplicateNotes = notes.filter((note) => title !== note.title);
 
     if (duplicateNotes.length < notes.length) {
         console.log(chalk.green.inverse('Note removed'));
